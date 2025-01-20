@@ -15,3 +15,8 @@ TEST(ItemList, empty_gives_empty_list) {
     std::vector<Item> items = list.get_items();
     ASSERT_EQ(0, items.size());
 }
+
+TEST(ItemList, is_empty_of_empty) {
+    ItemList list = ItemList();
+    ASSERT_TRUE(list.is_empty());
+}
