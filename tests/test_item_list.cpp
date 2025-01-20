@@ -26,3 +26,9 @@ TEST(ItemList, constructor_with_items_returns_items) {
     ItemList list = ItemList(items);
     ASSERT_EQ(items, list.get_items());
 }
+
+TEST(ItemList, constructed_with_items_gives_correct_size) {
+    std::vector<Item> items = {Item("item1"), Item("item2")};
+    ItemList list = ItemList(items);
+    ASSERT_EQ(items.size(), list.size());
+}

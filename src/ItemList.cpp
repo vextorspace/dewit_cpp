@@ -2,7 +2,7 @@
 #include "ItemList.h"
 
 const size_t ItemList::size() const {
-    return 0;
+    return items.size();
 }
 
 const std::vector<Item> ItemList::get_items() const {
