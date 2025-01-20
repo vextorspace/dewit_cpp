@@ -46,3 +46,11 @@ TEST(ItemList, add_item_adds_to_end) {
     ASSERT_EQ(item, list.get_items()[1]);
     ASSERT_TRUE(success);
 }
+
+TEST(ItemList, add_item_already_there_does_nothing) {
+    ItemList list = ItemList(std::vector<Item>{Item("Item 0", "id0")});
+    Item item = Item("Item 0", "id0");
+    bool success = list.add_item(item);
+    ASSERT_EQ(1, list.size());
+    ASSERT_FALSE(success);
+}

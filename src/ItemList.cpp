@@ -14,6 +14,12 @@ const bool ItemList::is_empty() const {
 }
 
 bool ItemList::add_item(const Item &item) {
+    if (std::any_of(items.begin(), items.end(),
+        [&item](const Item &existing_item) {
+            return existing_item.get_id() == item.get_id();
+        })) {
+        return false; // Do not add the item if ID already exists
+    }
     items.push_back(item);
     return true;
 }
