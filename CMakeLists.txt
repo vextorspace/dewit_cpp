@@ -24,6 +24,8 @@ file(GLOB_RECURSE TEST_SOURCES "${CMAKE_SOURCE_DIR}/tests/*.cpp")
 # Your main executable
 add_executable(dewit main.cpp
         ${PROGRAM_SOURCES}
+        src/Item.cpp
+        src/Item.h
 )
 
 
@@ -32,6 +34,7 @@ add_executable(
         dewit_tests
         ${PROGRAM_SOURCES}
         ${TEST_SOURCES}
+        tests/test_item.cpp
 )
 
 # Link the tests executable with Google Test
