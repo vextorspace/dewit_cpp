@@ -9,8 +9,9 @@ using namespace std;
 class Item {
 public:
     explicit Item(string content);
-    [[nodiscard]] string get_content() const;
+    explicit Item(string content, string id);
 
+    [[nodiscard]] string get_content() const;
     [[nodiscard]] string get_id() const;
 
 private:
