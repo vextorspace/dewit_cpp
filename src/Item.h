@@ -8,10 +8,10 @@ using namespace std;
 
 class Item {
 public:
-    explicit Item(string name);
-    [[nodiscard]] string get_name() const;
+    explicit Item(string content);
+    [[nodiscard]] string get_content() const;
 private:
-    string name;
+    string content;
 };
 
 

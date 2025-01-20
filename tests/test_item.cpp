@@ -2,7 +2,7 @@
 
 #include "Item.h"
 
-TEST(Item, hasName) {
+TEST(Item, has_content) {
     Item item("Test Item");
-    ASSERT_EQ(item.get_name(), "Test Item");
+    ASSERT_EQ(item.get_content(), "Test Item");
 }
