@@ -44,6 +44,7 @@ TEST(ItemList, add_item_adds_to_end) {
     Item item = Item("item1");
     bool success = list.add_item(item);
     ASSERT_EQ(item, list.get_items()[1]);
+    ASSERT_EQ(2, list.size());
     ASSERT_TRUE(success);
 }
 
