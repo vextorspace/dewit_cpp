@@ -22,3 +22,9 @@ TEST(Item, has_equals) {
     Item item2("Test Item", "SAME_ID");
     ASSERT_TRUE(item == item2);
 }
+
+TEST(Item, has_not_equals) {
+    Item item("Test Item", "SAME_ID");
+    Item item2("Test Item", "DIFFERENT_ID");
+    ASSERT_TRUE(item != item2);
+}
