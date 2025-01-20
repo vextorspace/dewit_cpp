@@ -20,6 +20,8 @@ public:
 
     bool add_item(const Item &item);
 
+    [[nodiscard]] const std::vector<std::string> get_content_list() const;
+
 private:
     std::vector<Item> items;
 };

@@ -60,3 +60,10 @@ TEST(ItemList, constructs_with_varargs) {
     ItemList list {Item("item1"), Item("item2")};
     ASSERT_EQ(2, list.size());
 }
+
+TEST(ItemList, get_content_list) {
+    ItemList list {Item("item1"), Item("item2")};
+    std::vector<std::string> content = list.get_content_list();
+    ASSERT_EQ("item1", content[0]);
+    ASSERT_EQ("item2", content[1]);
+}

@@ -24,6 +24,14 @@ bool ItemList::add_item(const Item &item) {
     return true;
 }
 
+const std::vector<std::string> ItemList::get_content_list() const {
+    std::vector<std::string> content_list;
+    for (const Item &item : items) {
+        content_list.push_back(item.get_content());
+    }
+    return content_list;
+}
+
 ItemList::ItemList(const std::vector<Item> &items)
     : items(std::move(items)){
 }
