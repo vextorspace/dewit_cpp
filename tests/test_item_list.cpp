@@ -49,9 +49,14 @@ TEST(ItemList, add_item_adds_to_end) {
 }
 
 TEST(ItemList, add_item_already_there_does_nothing) {
-    ItemList list = ItemList(std::vector<Item>{Item("Item 0", "id0")});
+    ItemList list = ItemList(std::vector{Item("Item 0", "id0")});
     Item item = Item("Item 0", "id0");
     bool success = list.add_item(item);
     ASSERT_EQ(1, list.size());
     ASSERT_FALSE(success);
+}
+
+TEST(ItemList, constructs_with_varargs) {
+    ItemList list {Item("item1"), Item("item2")};
+    ASSERT_EQ(2, list.size());
 }

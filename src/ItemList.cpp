@@ -28,3 +28,9 @@ ItemList::ItemList(const std::vector<Item> &items)
     : items(std::move(items)){
 }
 
+ItemList::ItemList(const std::initializer_list<Item> items) {
+    for (const Item &item : items) {
+        this->items.push_back(item);
+    }
+}
+
