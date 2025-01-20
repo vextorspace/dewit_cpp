@@ -13,6 +13,8 @@ public:
 
     [[nodiscard]] const bool is_empty() const;
 
+    bool add_item(const Item &item);
+
     ItemList() = default;
 
     explicit ItemList(const std::vector<Item> & items);

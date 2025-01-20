@@ -38,3 +38,11 @@ TEST(ItemList, constructed_with_items_not_empty) {
     ItemList list = ItemList(items);
     ASSERT_FALSE(list.is_empty());
 }
+
+TEST(ItemList, add_item_adds_to_end) {
+    ItemList list = ItemList(std::vector<Item>{Item("Item 0")});
+    Item item = Item("item1");
+    bool success = list.add_item(item);
+    ASSERT_EQ(item, list.get_items()[1]);
+    ASSERT_TRUE(success);
+}
