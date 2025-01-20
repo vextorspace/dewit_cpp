@@ -34,3 +34,8 @@ TEST(Item, can_be_assigned) {
     Item item2 = item;
     ASSERT_TRUE(item == item2);
 }
+
+TEST(Item, initiall_no_sub_items) {
+    Item item("Test Item");
+    ASSERT_EQ(item.get_sub_items().size(), 0);
+}

@@ -3,9 +3,8 @@
 #define ITEMLIST_H
 #include <cstddef>
 #include <vector>
-
-#include "Item.h"
 #include <initializer_list>
+class Item;
 
 class ItemList {
 public:

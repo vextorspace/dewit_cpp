@@ -3,6 +3,7 @@
 #define ITEM_H
 
 #include <string>
+#include "ItemList.h"
 
 using namespace std;
 
@@ -16,6 +17,8 @@ public:
 
 
     bool operator==(const Item &other) const;
+
+    [[nodiscard]] const ItemList get_sub_items() const;
 
 private:
     string content;

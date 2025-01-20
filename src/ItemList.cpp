@@ -1,5 +1,6 @@
 
 #include "ItemList.h"
+#include "Item.h"
 
 const size_t ItemList::size() const {
     return items.size();

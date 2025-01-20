@@ -1,5 +1,6 @@
 
 #include "Item.h"
+#include "ItemList.h"
 #include "UuidGenerator.h"
 
 Item::Item(string content)
@@ -21,4 +22,8 @@ string Item::get_id() const {
 
 bool Item::operator==(const Item &other) const {
     return id == other.id;
+}
+
+const ItemList Item::get_sub_items() const {
+    return ItemList();
 }
