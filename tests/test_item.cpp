@@ -28,3 +28,9 @@ TEST(Item, has_not_equals) {
     Item item2("Test Item", "DIFFERENT_ID");
     ASSERT_TRUE(item != item2);
 }
+
+TEST(Item, can_be_assigned) {
+    Item item("Test Item");
+    Item item2 = item;
+    ASSERT_TRUE(item == item2);
+}
