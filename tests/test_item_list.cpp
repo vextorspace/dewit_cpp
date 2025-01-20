@@ -20,3 +20,9 @@ TEST(ItemList, is_empty_of_empty) {
     ItemList list = ItemList();
     ASSERT_TRUE(list.is_empty());
 }
+
+TEST(ItemList, constructor_with_items_returns_items) {
+    std::vector<Item> items = {Item("item1"), Item("item2")};
+    ItemList list = ItemList(items);
+    ASSERT_EQ(items, list.get_items());
+}

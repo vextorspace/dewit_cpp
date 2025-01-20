@@ -12,6 +12,12 @@ public:
     [[nodiscard]] const std::vector<Item> get_items() const;
 
     [[nodiscard]] const bool is_empty() const;
+
+    ItemList() = default;
+
+    explicit ItemList(const std::vector<Item> & items);
+private:
+    std::vector<Item> items;
 };
 
 
