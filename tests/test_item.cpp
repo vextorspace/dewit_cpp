@@ -37,5 +37,7 @@ TEST(Item, can_be_assigned) {
 
 TEST(Item, initiall_no_sub_items) {
     Item item("Test Item");
-    ASSERT_EQ(item.get_sub_items().size(), 0);
+    ItemList items = item.get_sub_items();
+    ASSERT_EQ(items.size(), 0);
 }
+
