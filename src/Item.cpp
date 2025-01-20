@@ -18,3 +18,7 @@ string Item::get_content() const {
 string Item::get_id() const {
     return id;
 }
+
+bool Item::operator==(const Item &other) const {
+    return id == other.id;
+}

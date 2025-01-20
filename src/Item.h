@@ -14,6 +14,9 @@ public:
     [[nodiscard]] string get_content() const;
     [[nodiscard]] string get_id() const;
 
+
+    bool operator==(const Item &other) const;
+
 private:
     string content;
     string id;
