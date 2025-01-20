@@ -10,7 +10,7 @@ const std::vector<Item> ItemList::get_items() const {
 }
 
 const bool ItemList::is_empty() const {
-    return true;
+    return items.size() == 0;
 }
 
 ItemList::ItemList(const std::vector<Item> &items)

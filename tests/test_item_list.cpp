@@ -32,3 +32,9 @@ TEST(ItemList, constructed_with_items_gives_correct_size) {
     ItemList list = ItemList(items);
     ASSERT_EQ(items.size(), list.size());
 }
+
+TEST(ItemList, constructed_with_items_not_empty) {
+    std::vector<Item> items = {Item("item1"), Item("item2")};
+    ItemList list = ItemList(items);
+    ASSERT_FALSE(list.is_empty());
+}
