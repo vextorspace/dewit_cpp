@@ -26,6 +26,8 @@ add_executable(dewit main.cpp
         ${PROGRAM_SOURCES}
         src/Item.cpp
         src/Item.h
+        src/DisplayList.cpp
+        src/DisplayList.h
 )
 
 
@@ -35,6 +37,7 @@ add_executable(
         ${PROGRAM_SOURCES}
         ${TEST_SOURCES}
         tests/test_item.cpp
+        tests/test_display_list.cpp
 )
 
 # Link the tests executable with Google Test
