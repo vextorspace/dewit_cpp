@@ -33,3 +33,7 @@ bool Item::operator==(const Item &other) const {
 const ItemList Item::get_sub_items() const {
     return sub_items;
 }
+
+bool Item::add_sub_item(const Item &item) {
+    return sub_items.add_item(item);
+}

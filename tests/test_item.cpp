@@ -50,3 +50,10 @@ TEST(Item, constructed_with_items_has_subs) {
     ASSERT_EQ(items[1].get_content(), "child2");
 }
 
+TEST(Item, can_add_sub_item) {
+    Item item("Test Item");
+    item.add_sub_item(Item("child1"));
+    auto items = item.get_sub_items().get_items();
+    ASSERT_EQ(items.size(), 1);
+    ASSERT_EQ(items[0].get_content(), "child1");
+}

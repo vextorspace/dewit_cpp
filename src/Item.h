@@ -22,6 +22,8 @@ public:
 
     [[nodiscard]] const ItemList get_sub_items() const;
 
+    bool add_sub_item(const Item & item);
+
 private:
     string content;
     string id;
