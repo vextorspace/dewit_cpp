@@ -10,6 +10,8 @@ public:
 
     [[nodiscard]] Item get_root() const;
 
+    const ItemList display_items() const;
+
 private:
     Item root_item;
 };
