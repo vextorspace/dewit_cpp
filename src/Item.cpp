@@ -12,6 +12,12 @@ Item::Item(string content, string id)
     , id(std::move(id)) {
 }
 
+Item::Item(const char *str, const char *id1, const vector<Item> &items) {
+    content = str;
+    id = id1;
+    sub_items = ItemList(items);
+}
+
 string Item::get_content() const {
     return content;
 }
@@ -25,5 +31,5 @@ bool Item::operator==(const Item &other) const {
 }
 
 const ItemList Item::get_sub_items() const {
-    return ItemList();
+    return sub_items;
 }

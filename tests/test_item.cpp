@@ -41,3 +41,12 @@ TEST(Item, initiall_no_sub_items) {
     ASSERT_EQ(items.size(), 0);
 }
 
+TEST(Item, constructed_with_items_has_subs) {
+
+    Item item("Test Item", "id1", std::vector{Item("child1"), Item("child2")});
+    auto items = item.get_sub_items().get_items();
+    ASSERT_EQ(items.size(), 2);
+    ASSERT_EQ(items[0].get_content(), "child1");
+    ASSERT_EQ(items[1].get_content(), "child2");
+}
+
