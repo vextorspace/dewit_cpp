@@ -21,7 +21,7 @@ public:
 
     [[nodiscard]] const std::vector<std::string> get_content_list() const;
 
-    [[nodiscard]] const std::optional<Item*> find_item(const Item & item) const;
+    [[nodiscard]] const std::optional<const Item*> find_item(const Item & item) const;
 
 private:
     std::vector<Item> items;

@@ -33,7 +33,12 @@ const std::vector<std::string> ItemList::get_content_list() const {
     return content_list;
 }
 
-const std::optional<Item *> ItemList::find_item(const Item &item) const {
+const std::optional<const Item *> ItemList::find_item(const Item &item) const {
+    for (const Item &existing_item : items) {
+        if (existing_item.get_id() == item.get_id()) {
+            return std::optional(&existing_item);
+        }
+    }
     return std::nullopt;
 }
 
