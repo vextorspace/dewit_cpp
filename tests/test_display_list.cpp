@@ -19,3 +19,9 @@ TEST(DisplayList, returns_sub_items) {
     ASSERT_EQ(items.size(), 1);
     ASSERT_EQ(items.get_items()[0], sub_item);
 }
+
+TEST(DisplayList, selected_item_starts_as_root) {
+    Item root_item = Item("root");
+    DisplayList list = DisplayList(root_item);
+    ASSERT_EQ(list.get_selected_item(), root_item);
+}

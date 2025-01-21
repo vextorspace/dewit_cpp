@@ -12,8 +12,11 @@ public:
 
     const ItemList display_items() const;
 
+    const Item get_selected_item() const;
+
 private:
     Item root_item;
+    Item *selected_item;
 };
 
 
