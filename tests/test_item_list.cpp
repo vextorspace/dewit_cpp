@@ -67,3 +67,10 @@ TEST(ItemList, get_content_list) {
     ASSERT_EQ("item1", content[0]);
     ASSERT_EQ("item2", content[1]);
 }
+
+TEST(ItemList, find_item_returs_nullopt) {
+    Item item1{"Item 1", "id1"};
+    Item item2{"Item 2", "id2"};
+    ItemList list {item1, item2};
+    ASSERT_FALSE(list.find_item(Item("item3")).has_value());
+}

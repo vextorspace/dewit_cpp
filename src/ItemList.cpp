@@ -33,6 +33,10 @@ const std::vector<std::string> ItemList::get_content_list() const {
     return content_list;
 }
 
+const std::optional<Item *> ItemList::find_item(const Item &item) const {
+    return std::nullopt;
+}
+
 ItemList::ItemList(const std::vector<Item> &items)
     : items(std::move(items)){
 }
