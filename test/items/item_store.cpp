@@ -119,3 +119,20 @@ TEST(ItemStore, create_in_does_not_rearrange_pointers) {
     auto parent_id = parent->get_id();
     ASSERT_FALSE(parent_id.empty());
 }
+
+TEST(ItemStore, create_in_two_parents_with_same_id) {
+    ItemStore store = ItemStore();
+    const Item *parent1 = store.create("parent1");
+    const Item *parent2 = store.create("parent1");
+
+    ASSERT_NE(parent1, parent2);
+    optional<const Item *> child1 = store.create_in("child1", "c1", parent1->get_id());
+    optional<const Item *> child2 = store.create_in("child1", "c1", parent2->get_id());
+
+    ASSERT_TRUE(child1.has_value());
+    ASSERT_TRUE(child2.has_value());
+    ASSERT_EQ(child1, child2);
+    ASSERT_EQ(store.size(), 4); // note a new item is not made for second child
+    ASSERT_EQ(parent1->get_items().back(), parent2->get_items().back());
+
+}
