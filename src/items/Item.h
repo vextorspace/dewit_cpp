@@ -10,6 +10,7 @@ class Item {
 public:
     Item() = delete;
     Item(const string content);
+    Item(const string content, const string id);
 
     [[nodiscard]] const string get_content() const;
     [[nodiscard]] const string get_id() const;
