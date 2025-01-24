@@ -25,3 +25,12 @@ TEST(ItemStore, selected_item_default_root) {
     ItemStore store = ItemStore();
     ASSERT_EQ(store.get_selected_item(), store.get_root());
 }
+
+TEST(ItemStore, create_adds_to_root) {
+    ItemStore store = ItemStore();
+    const Item * item = store.create("content");
+
+    ASSERT_EQ(store.get_root()->get_items().size(), 1);
+    ASSERT_EQ(store.get_root()->get_items()[0]->get_content(), "content");
+    ASSERT_EQ(item, store.get_root()->get_items()[0]);
+}

@@ -9,8 +9,10 @@ public:
     ItemStore();
     const Item *get_root() const;
     const Item *get_selected_item() const;
+    const Item *create(const string &content);
 private:
-    const Item root;
+    Item *root;
+    std::vector<Item> items;
 };
 
 
