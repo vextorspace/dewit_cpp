@@ -27,8 +27,6 @@ file(GLOB_RECURSE TEST_SOURCES
         "${CMAKE_SOURCE_DIR}/test/*/*.cpp"
 )
 
-
-
 add_executable(dewit main.cpp
         ${PROGRAM_SOURCES}
         ${PROGRAM_HEADERS}

@@ -11,6 +11,9 @@ public:
     Item() = delete;
     Item(const string content);
 
+    [[nodiscard]] const string get_content() const;
+    [[nodiscard]] const string get_id() const;
+
 private:
     string content;
     string id;
