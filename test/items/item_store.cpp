@@ -46,3 +46,19 @@ TEST(ItemStore, get_all_items) {
     ASSERT_EQ(*all_items[1], *item);
     ASSERT_EQ(*all_items[0], *store.get_root());
 }
+
+TEST(ItemStore, find_by_id) {
+    ItemStore store = ItemStore();
+    const Item * item = store.create("content");
+
+    const std::optional<const Item *> found = store.find_by_id(item->get_id());
+    ASSERT_TRUE(found.has_value());
+    ASSERT_EQ(found.value(), item);
+}
+
+TEST(ItemStore, find_by_id_returns_null_not_found) {
+    ItemStore store = ItemStore();
+
+    const std::optional<const Item *> found = store.find_by_id("NON_EXISTENT ID");
+    ASSERT_FALSE(found.has_value());
+}

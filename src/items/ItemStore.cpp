@@ -27,3 +27,17 @@ const std::vector<const Item *> ItemStore::get_all_items() const {
                       [](const Item &item) { return &item; });
     return all_items;
 }
+
+const std::optional<const Item *> ItemStore::find_by_id(const string &parent_id) {
+    if (root.get_id() == parent_id) {
+        return &root;
+    }
+    auto it = std::find_if(items.begin(), items.end(), [&parent_id](const Item &item) {
+        return item.get_id() == parent_id;
+    });
+    if (it != items.end()) {
+        return &*it;
+    } else {
+        return std::nullopt;
+    }
+}
