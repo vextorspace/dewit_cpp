@@ -18,3 +18,9 @@ TEST(Item, creates_with_content_and_id) {
     ASSERT_EQ(item.get_content(), "content");
     ASSERT_EQ(item.get_id(), "id");
 }
+
+TEST(Item, can_change_contents) {
+    Item item("content");
+    item.set_content("new content");
+    ASSERT_EQ(item.get_content(), "new content");
+}

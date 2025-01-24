@@ -13,7 +13,9 @@ Item::Item(const string content, const string id)
       , id(std::move(id)) {
 }
 
-
+void Item::set_content(const string new_content) {
+    content = new_content;
+}
 
 const string Item::get_content() const {
     return content;

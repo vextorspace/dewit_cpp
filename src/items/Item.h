@@ -12,12 +12,13 @@ public:
     Item(const string content);
     Item(const string content, const string id);
 
+    void set_content(const string new_content);
     [[nodiscard]] const string get_content() const;
     [[nodiscard]] const string get_id() const;
 
 private:
     string content;
-    string id;
+    const string id;
 };
 
 
