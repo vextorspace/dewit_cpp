@@ -2,7 +2,7 @@
 #include "Item.h"
 
 #include "UuidGenerator.h"
-
+#include <ostream>
 Item::Item(const string content)
     : Item(std::move(content), UuidGenerator::generate()) {
 }
@@ -47,3 +47,6 @@ void Item::remove_item(const string &id) {
     }
 }
 
+void PrintTo(const Item &item, std::ostream *os) {
+    *os << "[" << item.id << ": " << item.get_content() << "]";
+}

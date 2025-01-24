@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <gtest/gtest.h>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ public:
         return this->id == other.id;
     }
 
+    friend void PrintTo(const Item &item, ::std::ostream *os);
 private:
     string content;
     const string id;
