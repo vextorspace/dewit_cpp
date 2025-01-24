@@ -19,6 +19,9 @@ public:
     [[nodiscard]] const vector<const Item *> get_items() const;
 
     void add_item(const Item *item);
+    inline bool operator==(const Item& other) const {
+        return this->id == other.id;
+    }
 
 private:
     string content;

@@ -32,3 +32,11 @@ TEST(Item, can_add_sub_item) {
     item.add_item(&child);
     ASSERT_EQ(item.get_items().size(), 1);
 }
+
+TEST(Item, equals_by_id) {
+    Item item1("content", "id");
+    Item item2("content doesn't matter", "id");
+    Item item3("content", "id3");
+    ASSERT_EQ(item1, item2);
+    ASSERT_NE(item1, item3);
+}
