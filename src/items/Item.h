@@ -19,6 +19,8 @@ public:
     [[nodiscard]] const vector<const Item *> get_items() const;
 
     void add_item(const Item *item);
+    void remove_item(const string &id);
+
     inline bool operator==(const Item& other) const {
         return this->id == other.id;
     }

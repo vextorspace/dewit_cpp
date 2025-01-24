@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "items/item.h"
+#include "items/Item.h"
 
 TEST(Item, creates_with_content_and_random_id) {
     Item item("content");
@@ -48,4 +48,17 @@ TEST(Item, will_not_duplicate_children) {
     item.add_item(&child);
     item.add_item(&child);
     ASSERT_EQ(item.get_items().size(), 1);
+}
+
+TEST(Item, can_remove_child) {
+    Item item("content");
+    Item child1("child1");
+    Item child2("child2");
+    item.add_item(&child1);
+    item.add_item(&child2);
+    ASSERT_EQ(item.get_items().size(), 2);
+    item.remove_item(child1.get_id());
+    ASSERT_EQ(item.get_items().size(), 1);
+    ASSERT_EQ(item.get_items()[0], &child2);
+    ASSERT_EQ(child1.get_content(), "child1");
 }

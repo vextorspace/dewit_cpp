@@ -38,3 +38,12 @@ void Item::add_item(const Item * child) {
     items.push_back(child);
 }
 
+void Item::remove_item(const string &id) {
+    for (auto it = items.begin(); it != items.end(); ++it) {
+        if ((*it)->get_id() == id) {
+            items.erase(it);
+            return;
+        }
+    }
+}
+
