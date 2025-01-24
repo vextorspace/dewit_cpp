@@ -75,3 +75,11 @@ TEST(ItemStore, create_in_parent) {
     ASSERT_EQ(store.size(), 3);
     ASSERT_EQ(store.get_all_items().back(), child.value());
 }
+
+TEST(ItemStore, create_with_id) {
+    ItemStore store = ItemStore();
+    const Item * item = store.create("content", "id");
+
+    ASSERT_EQ(item->get_id(), "id");
+    ASSERT_EQ(store.get_all_items().back(), item);
+}

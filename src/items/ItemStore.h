@@ -8,6 +8,7 @@ class ItemStore {
 public:
     ItemStore();
     const Item *create(const string &content);
+    const Item *create(const string &content, const string &id);
     const std::optional<const Item *> create_in(const string &content, const string &parent_id);
 
     const size_t size() const;
@@ -16,6 +17,7 @@ public:
     const Item *get_selected_item() const;
 
     const std::optional<const Item *> find_by_id(const string & parent_id);
+
 
 private:
     Item root;

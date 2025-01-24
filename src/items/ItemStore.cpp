@@ -1,11 +1,17 @@
 
 #include "ItemStore.h"
 
+#include "UuidGenerator.h"
+
 ItemStore::ItemStore() : root(Item("root")), items({}){
 }
 
 const Item * ItemStore::create(const string &content) {
-    items.push_back(Item(content));
+    return create(content, UuidGenerator::generate());
+}
+
+const Item * ItemStore::create(const string &content, const string &id) {
+    items.push_back(Item(content, id));
     root.add_item(&items.back());
     return &items.back();
 }
@@ -48,6 +54,7 @@ const std::vector<const Item *> ItemStore::get_all_items() const {
 const std::optional<const Item *> ItemStore::find_by_id(const string &id) {
     return find_modifiable_by_id(id);
 }
+
 
 std::optional<Item *> ItemStore::find_modifiable_by_id(const string &id) {
     if (root.get_id() == id) {
