@@ -4,13 +4,13 @@
 #include "UuidGenerator.h"
 
 Item::Item(const string content)
-    : content(std::move(content))
-      , id(UuidGenerator::generate()) {
+    : Item(std::move(content), UuidGenerator::generate()) {
 }
 
 Item::Item(const string content, const string id)
     : content(std::move(content))
-      , id(std::move(id)) {
+      , id(std::move(id))
+      , items(std::vector<const Item *>{}) {
 }
 
 void Item::set_content(const string new_content) {
@@ -23,4 +23,12 @@ const string Item::get_content() const {
 
 const string Item::get_id() const {
     return id;
+}
+
+const vector<const Item *> Item::get_items() const {
+    return items;
+}
+
+void Item::add_item(const Item * child) {
+    items.push_back(child);
 }

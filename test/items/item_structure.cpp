@@ -24,3 +24,11 @@ TEST(Item, can_change_contents) {
     item.set_content("new content");
     ASSERT_EQ(item.get_content(), "new content");
 }
+
+TEST(Item, can_add_sub_item) {
+    Item item("content");
+    ASSERT_EQ(item.get_items().size(), 0);
+    Item child("child");
+    item.add_item(&child);
+    ASSERT_EQ(item.get_items().size(), 1);
+}

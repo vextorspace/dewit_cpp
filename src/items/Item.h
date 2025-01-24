@@ -3,6 +3,7 @@
 #define ITEM_H
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -15,10 +16,14 @@ public:
     void set_content(const string new_content);
     [[nodiscard]] const string get_content() const;
     [[nodiscard]] const string get_id() const;
+    [[nodiscard]] const vector<const Item *> get_items() const;
+
+    void add_item(const Item *item);
 
 private:
     string content;
     const string id;
+    vector<const Item *> items;
 };
 
 
