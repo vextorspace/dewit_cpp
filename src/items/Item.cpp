@@ -30,6 +30,11 @@ const vector<const Item *> Item::get_items() const {
 }
 
 void Item::add_item(const Item * child) {
+    for (const auto* item : items) {
+        if (item == child) {
+            return; // If it already exists, do nothing
+        }
+    }
     items.push_back(child);
 }
 

@@ -39,4 +39,13 @@ TEST(Item, equals_by_id) {
     Item item3("content", "id3");
     ASSERT_EQ(item1, item2);
     ASSERT_NE(item1, item3);
+    ASSERT_TRUE(item1 != item3);
+}
+
+TEST(Item, will_not_duplicate_children) {
+    Item item("content");
+    Item child("child");
+    item.add_item(&child);
+    item.add_item(&child);
+    ASSERT_EQ(item.get_items().size(), 1);
 }
