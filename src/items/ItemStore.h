@@ -10,8 +10,9 @@ public:
     const Item *get_root() const;
     const Item *get_selected_item() const;
     const Item *create(const string &content);
+    const std::vector<const Item *> get_all_items() const;
 private:
-    Item *root;
+    Item root;
     std::vector<Item> items;
 };
 
