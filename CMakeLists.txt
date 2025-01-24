@@ -16,15 +16,15 @@ enable_testing()
 
 file(GLOB_RECURSE PROGRAM_SOURCES
         "${CMAKE_SOURCE_DIR}/src/*.cpp"
-        "${CMAKE_SOURCE_DIR}/src/*/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/test/*.cpp"
 )
 file(GLOB_RECURSE PROGRAM_HEADERS
         "${CMAKE_SOURCE_DIR}/src/*.h"
-        "${CMAKE_SOURCE_DIR}/src/*/*.h"
+        "${CMAKE_SOURCE_DIR}/src/test/*.h"
 )
 file(GLOB_RECURSE TEST_SOURCES
         "${CMAKE_SOURCE_DIR}/test/*.cpp"
-        "${CMAKE_SOURCE_DIR}/test/*/*.cpp"
+        "${CMAKE_SOURCE_DIR}/test/items/*.cpp"
 )
 
 add_executable(dewit main.cpp
