@@ -8,6 +8,7 @@ class ItemStore {
 public:
     ItemStore();
     const Item *get_root() const;
+    const Item *get_selected_item() const;
 private:
     const Item root;
 };

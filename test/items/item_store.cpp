@@ -20,3 +20,8 @@ TEST(ItemStore, different_store_gives_different_root) {
     ItemStore store2 = ItemStore();
     ASSERT_NE(store1.get_root(), store2.get_root());
 }
+
+TEST(ItemStore, selected_item_default_root) {
+    ItemStore store = ItemStore();
+    ASSERT_EQ(store.get_selected_item(), store.get_root());
+}
