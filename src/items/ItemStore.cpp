@@ -11,6 +11,10 @@ const Item * ItemStore::create(const string &content) {
 }
 
 const Item * ItemStore::create(const string &content, const string &id) {
+    std::optional<const Item *> already_there = find_by_id(id);
+    if (already_there.has_value()) {
+        return already_there.value();
+    }
     items.push_back(Item(content, id));
     root.add_item(&items.back());
     return &items.back();

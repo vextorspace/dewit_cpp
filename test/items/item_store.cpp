@@ -81,5 +81,10 @@ TEST(ItemStore, create_with_id) {
     const Item * item = store.create("content", "id");
 
     ASSERT_EQ(item->get_id(), "id");
+    ASSERT_EQ(store.size(), 2);
     ASSERT_EQ(store.get_all_items().back(), item);
+
+    const Item * item2 = store.create("content", "id");
+    ASSERT_EQ(store.size(), 2);
+    ASSERT_EQ(item, item2);
 }
