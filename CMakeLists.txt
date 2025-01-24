@@ -14,9 +14,19 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-file(GLOB_RECURSE PROGRAM_SOURCES "${CMAKE_SOURCE_DIR}/src/*.cpp")
-file(GLOB_RECURSE PROGRAM_HEADERS "${CMAKE_SOURCE_DIR}/src/*.h")
-file(GLOB_RECURSE TEST_SOURCES "${CMAKE_SOURCE_DIR}/test/*.cpp")
+file(GLOB_RECURSE PROGRAM_SOURCES
+        "${CMAKE_SOURCE_DIR}/src/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/*/*.cpp"
+)
+file(GLOB_RECURSE PROGRAM_HEADERS
+        "${CMAKE_SOURCE_DIR}/src/*.h"
+        "${CMAKE_SOURCE_DIR}/src/*/*.h"
+)
+file(GLOB_RECURSE TEST_SOURCES
+        "${CMAKE_SOURCE_DIR}/test/*.cpp"
+        "${CMAKE_SOURCE_DIR}/test/*/*.cpp"
+)
+
 
 
 add_executable(dewit main.cpp
@@ -39,10 +49,12 @@ target_link_libraries(dewit_tests PRIVATE
 
 target_include_directories(dewit PRIVATE
         ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/test
 )
 
 target_include_directories(dewit_tests PRIVATE
         ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/test
 )
 
 include(GoogleTest)
