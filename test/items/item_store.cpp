@@ -62,3 +62,16 @@ TEST(ItemStore, find_by_id_returns_null_not_found) {
     const std::optional<const Item *> found = store.find_by_id("NON_EXISTENT ID");
     ASSERT_FALSE(found.has_value());
 }
+
+TEST(ItemStore, create_in_parent) {
+    ItemStore store = ItemStore();
+    const Item * parent = store.create("parent");
+    const std::optional<const Item *> child = store.create_in("child", parent->get_id());
+    ASSERT_TRUE(child.has_value());
+
+    ASSERT_EQ(parent->get_items().size(), 1);
+    ASSERT_EQ(parent->get_items()[0]->get_content(), "child");
+    ASSERT_EQ(child.value(), parent->get_items()[0]);
+    ASSERT_EQ(store.size(), 3);
+    ASSERT_EQ(store.get_all_items().back(), child.value());
+}
