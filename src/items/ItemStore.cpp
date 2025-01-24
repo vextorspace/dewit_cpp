@@ -21,16 +21,27 @@ const Item * ItemStore::create(const string &content, const string &id) {
 }
 
 const std::optional<const Item *> ItemStore::create_in(const string &content, const string &parent_id) {
+    return create_in(content, UuidGenerator::generate(), parent_id);
+}
+
+const optional<const Item *> ItemStore::create_in(const string &content, const string &id, const string &parent_id) {
     std::optional<Item *>parent = find_modifiable_by_id(parent_id);
+    std::optional<const Item *> already_there = find_by_id(id);
 
     if (!parent.has_value()) {
         return std::nullopt;
     }
 
-    items.push_back(Item(content));
+    if (already_there.has_value()) {
+        parent.value()->add_item(already_there.value());
+        return already_there.value();
+    }
+
+    items.push_back(Item(content, id));
     parent.value()->add_item(&items.back());
     return &items.back();
 }
+
 
 
 const size_t ItemStore::size() const {

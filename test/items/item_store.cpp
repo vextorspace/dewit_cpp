@@ -88,3 +88,34 @@ TEST(ItemStore, create_with_id) {
     ASSERT_EQ(store.size(), 2);
     ASSERT_EQ(item, item2);
 }
+
+TEST(ItemStore, create_in_parent_with_id) {
+    ItemStore store = ItemStore();
+    const Item * parent = store.create("parent");
+
+    const std::optional<const Item *> child = store.create_in("child", "child's id", parent->get_id());
+
+    ASSERT_TRUE(child.has_value());
+
+    ASSERT_EQ(parent->get_items().size(), 1);
+    ASSERT_EQ(parent->get_items()[0]->get_id(), "child's id");
+    ASSERT_EQ(child.value(), parent->get_items()[0]);
+    ASSERT_EQ(store.size(), 3);
+    ASSERT_EQ(store.get_all_items().back(), child.value());
+
+    const std::optional<const Item *> child2 = store.create_in("child", "child's id", parent->get_id());
+    ASSERT_TRUE(child2.has_value());
+    ASSERT_EQ(child.value(), child2.value());
+    ASSERT_EQ(parent->get_items().size(), 1);
+
+}
+
+TEST(ItemStore, create_in_does_not_rearrange_pointers) {
+    ItemStore store = ItemStore();
+    const Item * parent = store.create("parent");
+    ASSERT_FALSE(parent->get_id().empty());
+
+    const std::optional<const Item *> child = store.create_in("child", "child's id", parent->get_id());
+    auto parent_id = parent->get_id();
+    ASSERT_FALSE(parent_id.empty());
+}
