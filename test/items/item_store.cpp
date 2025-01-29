@@ -147,3 +147,25 @@ TEST(ItemStore, remove_from_removes_item_from_parent) {
 
     ASSERT_EQ(parent->get_items().size(), 0);
 }
+
+TEST(ItemStore, remove_from_removes_from_store_when_last_ref_removed) {
+    ItemStore store = ItemStore();
+    const Item *parent1 = store.create("parent1");
+    const Item *parent2 = store.create("parent2");
+    const Item *child = store.create_in("child", parent1->get_id()).value();
+    store.create_in(child->get_content(), child->get_id(), parent2->get_id());
+
+    ASSERT_EQ(parent1->get_items().size(), 1);
+    ASSERT_EQ(parent2->get_items().size(), 1);
+    store.remove_from(child->get_id(), parent2->get_id());
+    ASSERT_EQ(parent1->get_items().size(), 1);
+    ASSERT_EQ(parent2->get_items().size(), 0);
+
+    ASSERT_TRUE(store.find_by_id(child->get_id()).has_value());
+
+    store.remove_from(child->get_id(), parent1->get_id());
+    ASSERT_EQ(parent1->get_items().size(), 0);
+    ASSERT_EQ(parent2->get_items().size(), 0);
+
+    ASSERT_FALSE(store.find_by_id(child->get_id()).has_value());
+}

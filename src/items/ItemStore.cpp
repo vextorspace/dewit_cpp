@@ -78,6 +78,19 @@ void ItemStore::remove_from(const string &child_id, const string &parent_id) {
 
     if (parent.has_value() && child.has_value()) {
         parent.value()->remove_child(child.value());
+    } else {
+        std::cout << "=============== ERRAR =============" << std::endl;
+    }
+
+    bool references_remain = ranges::any_of(items,
+                                            [&child_id](const Item &parent) {
+                                                return parent.has_child(child_id);
+                                            });
+
+    if (!references_remain) {
+        items.remove_if([&child_id](const Item &item) {
+            return item.get_id() == child_id;
+        });
     }
 }
 
@@ -86,11 +99,17 @@ std::optional<Item *> ItemStore::find_modifiable_by_id(const string &id) {
     if (root.get_id() == id) {
         return &root;
     }
-    auto it = std::find_if(items.begin(), items.end(), [&id](const Item &item) {
-        return item.get_id() == id;
-    });
-    if (it != items.end()) {
-        return &*it;
+
+
+    auto found = std::ranges::find_if(
+        items,
+        [&id](const Item &item) {
+            return item.get_id() == id;
+        });
+
+
+    if (found != items.end()) {
+        return std::to_address(found);
     }
 
     return std::nullopt;

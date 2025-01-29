@@ -30,6 +30,8 @@ public:
 
     void remove_child(const Item * child);
 
+    [[nodiscard]] bool has_child(const string & child_id) const;
+
 private:
     string content;
     const string id;

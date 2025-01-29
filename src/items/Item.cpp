@@ -3,6 +3,8 @@
 
 #include "UuidGenerator.h"
 #include <ostream>
+#include <bits/ranges_algo.h>
+
 Item::Item(const string content)
     : Item(std::move(content), UuidGenerator::generate()) {
 }
@@ -49,6 +51,13 @@ void Item::remove_item(const string &id) {
 
 void Item::remove_child(const Item * child) {
     items.erase(std::remove(items.begin(), items.end(), child),items.end());
+}
+
+bool Item::has_child(const string &child_id) const {
+    return ranges::any_of(items,
+        [&child_id](const Item *item) {
+            return item->get_id() == child_id;
+        });
 }
 
 void PrintTo(const Item &item, std::ostream *os) {
