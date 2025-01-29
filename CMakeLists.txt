@@ -36,6 +36,8 @@ add_executable(dewit main.cpp
         test/display/command.cpp
         src/display/Command.cpp
         src/display/Command.h
+        src/display/AddItem.cpp
+        src/display/AddItem.h
 )
 
 add_executable(dewit_tests
