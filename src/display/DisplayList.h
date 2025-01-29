@@ -18,6 +18,8 @@ public:
 
     [[nodiscard]] std::vector<const Item *> get_breadcrumbs() const ;
 
+    void go_back();
+
 private:
     ItemStore *item_store;
     const Item * selected_item;

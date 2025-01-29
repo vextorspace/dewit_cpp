@@ -35,3 +35,9 @@ std::vector<const Item *> DisplayList::items() const {
 std::vector<const Item *> DisplayList::get_breadcrumbs() const {
     return breadcrumbs;
 }
+
+void DisplayList::go_back() {
+    if (breadcrumbs.size() > 1) {
+        breadcrumbs.erase(breadcrumbs.end());
+    }
+}
