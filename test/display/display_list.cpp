@@ -40,3 +40,20 @@ TEST(DisplayList, gets_current_selected_item_list) {
     ASSERT_EQ(items[0]->get_id(), child1.value()->get_id());
     ASSERT_EQ(items[1]->get_id(), child2.value()->get_id());
 }
+
+TEST(DisplayList, keeps_a_breadcrumb_trail_of_selected_items) {
+    auto store = ItemStore();
+    const Item* item1 = store.create("item1");
+    const Item* item2 = store.create("item2");
+    optional<const Item*> child1 = store.create_in("child1", item1->get_id());
+    optional<const Item*> child2 = store.create_in("child2", item1->get_id());
+
+    auto list = DisplayList(&store);
+    list.select_item(item1);
+
+    std::vector<const Item *> trail = list.get_breadcrumbs();
+
+    ASSERT_EQ(trail.size(), 2);
+    ASSERT_EQ(trail[0]->get_id(), store.get_root()->get_id());
+    ASSERT_EQ(trail[1]->get_id(), item1->get_id());
+}

@@ -7,7 +7,10 @@
 
 DisplayList::DisplayList(ItemStore *item_store)
     : item_store(item_store)
-      , selected_item(item_store->get_root()) {
+      , selected_item(item_store->get_root())
+      , breadcrumbs({})
+{
+    breadcrumbs.push_back(item_store->get_root());
 }
 
 const Item * DisplayList::get_root() const {
@@ -20,8 +23,15 @@ const Item * DisplayList::get_selected_item() const {
 
 void DisplayList::select_item(const Item *item) {
     selected_item = item;
+    if (breadcrumbs.back()->get_id() != item->get_id()) {
+        breadcrumbs.push_back(item);
+    }
 }
 
-std::vector<const Item *> DisplayList::items() {
+std::vector<const Item *> DisplayList::items() const {
     return selected_item->get_items();
+}
+
+std::vector<const Item *> DisplayList::get_breadcrumbs() const {
+    return breadcrumbs;
 }
