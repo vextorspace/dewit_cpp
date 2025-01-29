@@ -134,5 +134,16 @@ TEST(ItemStore, create_in_two_parents_with_same_id) {
     ASSERT_EQ(child1, child2);
     ASSERT_EQ(store.size(), 4); // note a new item is not made for second child
     ASSERT_EQ(parent1->get_items().back(), parent2->get_items().back());
+}
 
+TEST(ItemStore, remove_from_removes_item_from_parent) {
+    ItemStore store = ItemStore();
+    const Item *parent = store.create("parent");
+    const Item * child = store.create_in("child", parent->get_id()).value();
+
+    ASSERT_EQ(parent->get_items().size(), 1);
+
+    store.remove_from(child->get_id(), parent->get_id());
+
+    ASSERT_EQ(parent->get_items().size(), 0);
 }

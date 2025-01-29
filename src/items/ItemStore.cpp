@@ -1,6 +1,8 @@
 
 #include "ItemStore.h"
 
+#include <bits/ranges_algo.h>
+
 #include "UuidGenerator.h"
 
 ItemStore::ItemStore() : root(Item("root")), items({}){
@@ -68,6 +70,15 @@ const std::vector<const Item *> ItemStore::get_all_items() const {
 
 const std::optional<const Item *> ItemStore::find_by_id(const string &id) {
     return find_modifiable_by_id(id);
+}
+
+void ItemStore::remove_from(const string &child_id, const string &parent_id) {
+    auto parent = find_modifiable_by_id(parent_id);
+    auto child = find_by_id(child_id);
+
+    if (parent.has_value() && child.has_value()) {
+        parent.value()->remove_child(child.value());
+    }
 }
 
 

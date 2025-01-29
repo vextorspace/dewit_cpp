@@ -27,6 +27,9 @@ public:
     }
 
     friend void PrintTo(const Item &item, ::std::ostream *os);
+
+    void remove_child(const Item * child);
+
 private:
     string content;
     const string id;

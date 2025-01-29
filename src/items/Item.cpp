@@ -47,6 +47,10 @@ void Item::remove_item(const string &id) {
     }
 }
 
+void Item::remove_child(const Item * child) {
+    items.erase(std::remove(items.begin(), items.end(), child),items.end());
+}
+
 void PrintTo(const Item &item, std::ostream *os) {
     *os << "[" << item.id << ": " << item.get_content() << "]";
 }

@@ -21,7 +21,7 @@ public:
 
     const optional<const Item *> find_by_id(const string & parent_id);
 
-
+    void remove_from(const string & child_id, const string & parent_id);
 
 private:
     Item root;
