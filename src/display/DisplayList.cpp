@@ -41,3 +41,9 @@ void DisplayList::go_back() {
         breadcrumbs.erase(breadcrumbs.end());
     }
 }
+
+const string DisplayList::get_input() const {
+    string input;
+    std::cin >> input;
+    return input;
+}

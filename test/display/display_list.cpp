@@ -75,3 +75,18 @@ TEST(DisplayList, can_pop_breadcrumb_trail) {
     ASSERT_EQ(trail[0]->get_id(), store.get_root()->get_id());
     ASSERT_EQ(trail[1]->get_id(), item2->get_id());
 }
+
+TEST(DisplayList, can_request_input) {
+    std::istringstream simulatedInput("hello"); // Simulated user input
+    std::streambuf* origCin = std::cin.rdbuf(); // Backup original cin
+    std::cin.rdbuf(simulatedInput.rdbuf());     // Replace cin with simulated input
+
+    auto store = ItemStore();
+    auto list = DisplayList(&store);
+
+    string text = list.get_input();
+
+    std::cin.rdbuf(origCin);
+
+    ASSERT_EQ(text, "hello");
+}
