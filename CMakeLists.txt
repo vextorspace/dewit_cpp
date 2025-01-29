@@ -30,6 +30,9 @@ file(GLOB_RECURSE TEST_SOURCES
 add_executable(dewit main.cpp
         ${PROGRAM_SOURCES}
         ${PROGRAM_HEADERS}
+        test/display/display_list.cpp
+        src/display/DisplayList.cpp
+        src/display/DisplayList.h
 )
 
 add_executable(dewit_tests
