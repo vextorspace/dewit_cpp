@@ -6,11 +6,19 @@
 class DisplayList {
 public:
     DisplayList() = delete;
-    DisplayList(ItemStore *item_store);
+    explicit DisplayList(ItemStore *item_store);
 
-    const Item * get_root();
+    const Item * get_root() const;
+
+    const Item * get_selected_item() const;
+
+    void select_item(const Item * item);
+
+    std::vector<const Item *> items();
+
 private:
     ItemStore *item_store;
+    const Item * selected_item;
 };
 
 
