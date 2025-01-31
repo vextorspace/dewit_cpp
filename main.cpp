@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "display/ConsoleInput.h"
 #include "display/ConsoleOutput.h"
 #include "display/DisplayList.h"
 #include "display/Menu.h"
@@ -10,9 +11,14 @@ int main() {
     auto store = ItemStore();
     auto list = DisplayList(&store);
     auto output = ConsoleOutput();
-    auto menu = Menu(&store, &list, &output);
+    auto input = ConsoleInput();
 
-    menu.print();
+    auto menu = Menu(&store, &list, &output, &input);
 
-    return 0;
+    while (true) {
+        menu.print();
+        auto selection = menu.get_user_selection();
+    }
+
+    return -1;
 }
