@@ -45,5 +45,5 @@ void DisplayList::go_back() {
 }
 
 string DisplayList::get_input() const {
-    return ConsoleInput::read_line();
+    return ConsoleInput().read_line();
 }

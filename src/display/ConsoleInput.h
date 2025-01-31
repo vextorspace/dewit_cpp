@@ -5,7 +5,7 @@
 
 class ConsoleInput {
 public:
-    [[nodiscard]] static std::string read_line();
+    [[nodiscard]] std::string read_line();
 };
 
 
