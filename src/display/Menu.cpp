@@ -23,3 +23,5 @@ std::vector<const Command *> Menu::get_commands() const {
     }
     return command_list;
 }
+
+

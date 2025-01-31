@@ -44,6 +44,9 @@ add_executable(dewit main.cpp
         test/display/menu.cpp
         src/display/Menu.cpp
         src/display/Menu.h
+        test/display/console_output.cpp
+        src/display/ConsoleOutput.cpp
+        src/display/ConsoleOutput.h
 )
 
 add_executable(dewit_tests
