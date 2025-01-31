@@ -8,8 +8,9 @@ class Command {
 public:
     Command() = delete;
     explicit Command(const string &name);
+    virtual ~Command() = default;
 
-    const string get_name() const;
+    [[nodiscard]] const string get_name() const;
 private:
     string name;
 };
