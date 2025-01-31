@@ -20,7 +20,7 @@ public:
 
     void go_back();
 
-    [[nodiscard]] const string get_input() const;
+    [[nodiscard]] string get_input() const;
 
 private:
     ItemStore *item_store;

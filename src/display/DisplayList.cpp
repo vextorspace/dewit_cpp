@@ -44,6 +44,6 @@ void DisplayList::go_back() {
     }
 }
 
-const string DisplayList::get_input() const {
+string DisplayList::get_input() const {
     return ConsoleInput::read_line();
 }
