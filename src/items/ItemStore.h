@@ -17,7 +17,6 @@ public:
     const size_t size() const;
     const vector<const Item *> get_all_items() const;
     const Item *get_root() const;
-    const Item *get_selected_item() const;
 
     const optional<const Item *> find_by_id(const string & parent_id);
 

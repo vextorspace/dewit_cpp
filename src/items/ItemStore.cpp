@@ -54,10 +54,6 @@ const Item * ItemStore::get_root() const {
     return &root;
 }
 
-const Item * ItemStore::get_selected_item() const {
-    return &root;
-}
-
 const std::vector<const Item *> ItemStore::get_all_items() const {
     std::vector<const Item *> all_items;
     all_items.reserve(items.size() + 1);

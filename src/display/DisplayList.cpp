@@ -20,7 +20,7 @@ const Item * DisplayList::get_root() const {
 }
 
 const Item * DisplayList::get_selected_item() const {
-    return item_store->get_root();
+    return this->selected_item;
 }
 
 void DisplayList::select_item(const Item *item) {

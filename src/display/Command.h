@@ -11,6 +11,7 @@ public:
     virtual ~Command() = default;
 
     [[nodiscard]] const string get_name() const;
+    virtual void execute() = 0;
 private:
     string name;
 };

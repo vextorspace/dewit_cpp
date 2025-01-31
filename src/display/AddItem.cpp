@@ -8,3 +8,8 @@ AddItem::AddItem(ItemStore *item_store, DisplayList *display_list) : Command("Ad
     this->item_store = item_store;
     this->display_list = display_list;
 }
+
+void AddItem::execute() {
+    auto content = display_list->get_input();
+    item_store->create_in(content, display_list->get_selected_item()->get_id());
+}

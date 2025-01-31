@@ -9,10 +9,13 @@ class AddItem : public Command{
 public:
     AddItem() = delete;
     explicit AddItem(ItemStore *item_store, DisplayList *display_list);
+    void execute() override;
 
 private:
     ItemStore *item_store;
     DisplayList *display_list;
+
+
 };
 
 
