@@ -38,6 +38,9 @@ add_executable(dewit main.cpp
         src/display/Command.h
         src/display/AddItem.cpp
         src/display/AddItem.h
+        test/display/test_virtual_input.cpp
+        src/display/ConsoleInput.cpp
+        src/display/ConsoleInput.h
 )
 
 add_executable(dewit_tests
