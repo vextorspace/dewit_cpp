@@ -4,6 +4,8 @@
 
 #include "DisplayList.h"
 
+#include "ConsoleInput.h"
+
 
 DisplayList::DisplayList(ItemStore *item_store)
     : item_store(item_store)
@@ -43,7 +45,5 @@ void DisplayList::go_back() {
 }
 
 const string DisplayList::get_input() const {
-    string input;
-    std::cin >> input;
-    return input;
+    return ConsoleInput::read_line();
 }
