@@ -3,6 +3,7 @@
 #define MENU_H
 #include "Command.h"
 #include "DisplayList.h"
+#include "Input.h"
 #include "Output.h"
 #include "items/ItemStore.h"
 
@@ -13,6 +14,7 @@ public:
     explicit Menu(ItemStore *store, DisplayList *display_list);
 
     Menu(ItemStore * store, DisplayList * list, Output *output);
+    Menu(ItemStore * store, DisplayList * list, Output *output, Input *input);
 
     ~Menu();
 
@@ -24,11 +26,14 @@ public:
 
     void print() const;
 
+    std::string get_user_selection();
+
 private:
     ItemStore *store;
     DisplayList *display_list;
     std::vector<Command *> commands;
     Output *output;
+    Input *input;
 };
 
 

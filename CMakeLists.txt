@@ -23,7 +23,10 @@ file(GLOB_RECURSE PROGRAM_SOURCES
 file(GLOB_RECURSE PROGRAM_HEADERS
         "${CMAKE_SOURCE_DIR}/src/*.h"
         "${CMAKE_SOURCE_DIR}/src/test/*.h"
+        "${CMAKE_SOURCE_DIR}/src/items/*.h"
+        "${CMAKE_SOURCE_DIR}/src/display/*.h"
 )
+
 file(GLOB_RECURSE TEST_SOURCES
         "${CMAKE_SOURCE_DIR}/test/*.cpp"
         "${CMAKE_SOURCE_DIR}/test/items/*.cpp"

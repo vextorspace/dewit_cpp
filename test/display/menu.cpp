@@ -7,6 +7,7 @@
 #include "items/ItemStore.h"
 #include "display/Output.h"
 #include "OutputSpy.h"
+#include "InputFake.h"
 
 TEST(Menu, get_commands_has_add_item) {
     auto store = ItemStore();
@@ -65,4 +66,14 @@ TEST(Menu, print_prints_items_commands) {
         std::format("{}\n => 1. {}\n\nAdd Item\n"
             , item1->get_content()
             , child1.value()->get_content()));
+}
+
+TEST(Menu, get_response_gets_input) {
+    const std::string THE_RESPONSE = "SOME INPUT::\n";
+    auto input = InputFake(THE_RESPONSE);
+    auto menu = Menu(nullptr, nullptr, nullptr, &input);
+
+    std::string response = menu.get_user_selection();
+
+    ASSERT_EQ(response, THE_RESPONSE);
 }

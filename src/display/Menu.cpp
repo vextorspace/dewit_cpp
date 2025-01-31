@@ -5,12 +5,13 @@
 
 #include <format>
 
-Menu::Menu(ItemStore *store, DisplayList *display_list) : Menu(store, display_list, nullptr) {
-
-}
+Menu::Menu(ItemStore *store, DisplayList *display_list)
+: Menu(store, display_list, nullptr) {}
 
 Menu::Menu(ItemStore *store, DisplayList *list, Output *output)
-: store(store), display_list(list), output(output){
+: Menu(store, list, output, nullptr) {}
+
+Menu::Menu(ItemStore *store, DisplayList *list, Output *output, Input *input) : store(store), display_list(list), output(output), input(input) {
     this->commands = std::vector<Command *>{new AddItem(store, display_list)};
 }
 
@@ -57,6 +58,10 @@ void Menu::print() const {
     print_items();
     output->write_line("");
     print_commands();
+}
+
+std::string Menu::get_user_selection() {
+    return input->read_line();
 }
 
 
