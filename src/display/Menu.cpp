@@ -53,4 +53,10 @@ void Menu::print_items() const {
     }
 }
 
+void Menu::print() const {
+    print_items();
+    output->write_line("");
+    print_commands();
+}
+
 

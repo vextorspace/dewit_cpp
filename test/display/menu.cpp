@@ -51,3 +51,20 @@ TEST(Menu, print_items_writes_selected_item_and_numbered_children) {
             , child2.value()->get_content()));
 }
 
+TEST(Menu, print_prints_items_commands) {
+    auto store = ItemStore();
+    const Item* item1 = store.create("item1");
+    optional<const Item*> child1 = store.create_in("child1", item1->get_id());
+    auto list = DisplayList(&store);
+    list.select_item(item1);
+    auto output = OutputSpy();
+    auto menu = Menu(&store, &list, &output);
+
+    menu.print();
+    ASSERT_EQ(output.get_output(),
+        std::format("{}\n => 1. {}\n\nAdd Item\n"
+            , item1->get_content()
+            , child1.value()->get_content()));
+
+
+}

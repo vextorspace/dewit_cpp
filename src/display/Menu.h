@@ -22,6 +22,8 @@ public:
 
     void print_items() const;
 
+    void print() const;
+
 private:
     ItemStore *store;
     DisplayList *display_list;
