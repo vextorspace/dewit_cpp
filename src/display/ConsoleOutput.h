@@ -4,7 +4,7 @@
 #include <string>
 #include "Output.h"
 
-class ConsoleOutput : Output {
+class ConsoleOutput : public Output {
 public:
     ConsoleOutput() = default;
     ~ConsoleOutput() override = default;

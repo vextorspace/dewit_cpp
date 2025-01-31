@@ -65,6 +65,4 @@ TEST(Menu, print_prints_items_commands) {
         std::format("{}\n => 1. {}\n\nAdd Item\n"
             , item1->get_content()
             , child1.value()->get_content()));
-
-
 }
