@@ -4,5 +4,7 @@
 
 #include "AddItem.h"
 
-AddItem::AddItem(): Command("Add Item") {
+AddItem::AddItem(ItemStore *item_store, DisplayList *display_list) : Command("Add Item") {
+    this->item_store = item_store;
+    this->display_list = display_list;
 }
