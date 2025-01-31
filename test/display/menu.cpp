@@ -1,3 +1,4 @@
+#include <format>
 #include <gtest/gtest.h>
 
 #include "display/Command.h"
@@ -43,5 +44,5 @@ TEST(Menu, print_items_writes_selected_item_and_children) {
 
     menu.print_items();
 
-    ASSERT_EQ(output.get_output(), "item1\n => child1\n => child2\n");
+    ASSERT_EQ(output.get_output(), std::format("{}\n => {}\n => {}\n", item1->get_content(), child1.value()->get_content(), child2.value()->get_content()));
 }
