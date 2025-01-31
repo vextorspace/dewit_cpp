@@ -31,7 +31,7 @@ TEST(Menu, print_commands_writes_list) {
 }
 
 
-TEST(Menu, print_items_writes_selected_item_and_children) {
+TEST(Menu, print_items_writes_selected_item_and_numbered_children) {
     auto store = ItemStore();
     const Item* item1 = store.create("item1");
     const Item* item2 = store.create("item2");
@@ -45,8 +45,9 @@ TEST(Menu, print_items_writes_selected_item_and_children) {
     menu.print_items();
 
     ASSERT_EQ(output.get_output(),
-        std::format("{}\n => {}\n => {}\n"
+        std::format("{}\n => 1. {}\n => 2. {}\n"
             , item1->get_content()
             , child1.value()->get_content()
             , child2.value()->get_content()));
 }
+

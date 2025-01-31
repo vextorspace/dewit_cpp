@@ -44,8 +44,12 @@ void Menu::print_commands() const {
 
 void Menu::print_items() const {
     output->write_line(display_list->get_selected_item()->get_content());
+    size_t index = 1;
     for (const auto item: this->display_list->items()) {
-        output->write_line(std::format(" => {}", item->get_content()));
+        output->write_line(
+            std::format(" => {}. {}"
+                , index++
+                , item->get_content()));
     }
 }
 
