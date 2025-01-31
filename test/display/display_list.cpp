@@ -77,7 +77,7 @@ TEST(DisplayList, can_pop_breadcrumb_trail) {
 }
 
 TEST(DisplayList, can_request_input) {
-    std::istringstream simulatedInput("hello"); // Simulated user input
+    std::istringstream simulatedInput("hello there"); // Simulated user input
     std::streambuf* origCin = std::cin.rdbuf(); // Backup original cin
     std::cin.rdbuf(simulatedInput.rdbuf());     // Replace cin with simulated input
 
@@ -88,5 +88,5 @@ TEST(DisplayList, can_request_input) {
 
     std::cin.rdbuf(origCin);
 
-    ASSERT_EQ(text, "hello");
+    ASSERT_EQ(text, "hello there");
 }
