@@ -1,8 +1,9 @@
 
 #include "Menu.h"
-
 #include "AddItem.h"
 #include "ConsoleOutput.h"
+
+#include <format>
 
 Menu::Menu(ItemStore *store, DisplayList *display_list) : Menu(store, display_list, nullptr) {
 
@@ -39,6 +40,13 @@ void Menu::print_commands() const {
         command_names += command->get_name();
     }
     output->write_line(command_names);
+}
+
+void Menu::print_items() const {
+    output->write_line(display_list->get_selected_item()->get_content());
+    for (const auto item: this->display_list->items()) {
+        output->write_line(std::format(" => {}", item->get_content()));
+    }
 }
 
 

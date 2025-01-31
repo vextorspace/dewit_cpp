@@ -26,5 +26,22 @@ TEST(Menu, print_commands_writes_list) {
 
     menu.print_commands();
 
-    ASSERT_EQ(output.get_output(), "Add Item");
+    ASSERT_EQ(output.get_output(), "Add Item\n");
+}
+
+
+TEST(Menu, print_items_writes_selected_item_and_children) {
+    auto store = ItemStore();
+    const Item* item1 = store.create("item1");
+    const Item* item2 = store.create("item2");
+    optional<const Item*> child1 = store.create_in("child1", item1->get_id());
+    optional<const Item*> child2 = store.create_in("child2", item1->get_id());
+    auto list = DisplayList(&store);
+    list.select_item(item1);
+    auto output = OutputSpy();
+    auto menu = Menu(&store, &list, &output);
+
+    menu.print_items();
+
+    ASSERT_EQ(output.get_output(), "item1\n => child1\n => child2\n");
 }

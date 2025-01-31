@@ -20,6 +20,8 @@ public:
 
     void print_commands() const;
 
+    void print_items() const;
+
 private:
     ItemStore *store;
     DisplayList *display_list;
