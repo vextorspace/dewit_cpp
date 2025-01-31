@@ -5,10 +5,7 @@
 
 class ConsoleInput {
 public:
-    ConsoleInput() = default;
-    ~ConsoleInput() = default;
-
-    [[nodiscard]] std::string read_line();
+    [[nodiscard]] static std::string read_line();
 };
 
 
