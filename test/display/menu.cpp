@@ -25,4 +25,6 @@ TEST(Menu, print_commands_writes_list) {
     auto menu = Menu(&store, &list, &output);
 
     menu.print_commands();
+
+    ASSERT_EQ(output.get_output(), "Add Item");
 }
