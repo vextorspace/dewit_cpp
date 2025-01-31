@@ -2,11 +2,13 @@
 #ifndef CONSOLEOUTPUT_H
 #define CONSOLEOUTPUT_H
 #include <string>
+#include "Output.h"
 
-
-class ConsoleOutput {
+class ConsoleOutput : Output {
 public:
-    static void write_line(const std::string &message);
+    ConsoleOutput() = default;
+    ~ConsoleOutput() override = default;
+    void write_line(const std::string &message) override;
 };
 
 

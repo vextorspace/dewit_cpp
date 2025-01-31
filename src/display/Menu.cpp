@@ -2,8 +2,14 @@
 #include "Menu.h"
 
 #include "AddItem.h"
+#include "ConsoleOutput.h"
 
-Menu::Menu(ItemStore *store, DisplayList *display_list) : store(store), display_list(display_list) {
+Menu::Menu(ItemStore *store, DisplayList *display_list) : Menu(store, display_list, nullptr) {
+
+}
+
+Menu::Menu(ItemStore *store, DisplayList *list, Output *output)
+: store(store), display_list(list), output(output){
     this->commands = std::vector<Command *>{new AddItem(store, display_list)};
 }
 
@@ -22,6 +28,17 @@ std::vector<const Command *> Menu::get_commands() const {
         command_list.push_back(command);
     }
     return command_list;
+}
+
+void Menu::print_commands() const {
+    std::string command_names;
+    for (const auto &command: commands) {
+        if (!command_names.empty()) {
+            command_names += " | ";
+        }
+        command_names += command->get_name();
+    }
+    output->write_line(command_names);
 }
 
 

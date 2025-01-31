@@ -7,7 +7,7 @@ TEST(ConsoleOutput, writes_text_to_cout) {
     std::streambuf *oldCoutBuffer = std::cout.rdbuf(buffer.rdbuf());
 
     std::string output = "hello there";
-    ConsoleOutput::write_line(output);
+    ConsoleOutput().write_line(output);
 
     std::cout.rdbuf(oldCoutBuffer); // Restore the original buffer
 

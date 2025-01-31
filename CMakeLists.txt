@@ -16,7 +16,9 @@ enable_testing()
 
 file(GLOB_RECURSE PROGRAM_SOURCES
         "${CMAKE_SOURCE_DIR}/src/*.cpp"
-        "${CMAKE_SOURCE_DIR}/src/test/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/src/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/src/items/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/src/display/*.cpp"
 )
 file(GLOB_RECURSE PROGRAM_HEADERS
         "${CMAKE_SOURCE_DIR}/src/*.h"
@@ -25,28 +27,12 @@ file(GLOB_RECURSE PROGRAM_HEADERS
 file(GLOB_RECURSE TEST_SOURCES
         "${CMAKE_SOURCE_DIR}/test/*.cpp"
         "${CMAKE_SOURCE_DIR}/test/items/*.cpp"
+        "${CMAKE_SOURCE_DIR}/test/display/*.cpp"
 )
 
 add_executable(dewit main.cpp
         ${PROGRAM_SOURCES}
         ${PROGRAM_HEADERS}
-        test/display/display_list.cpp
-        src/display/DisplayList.cpp
-        src/display/DisplayList.h
-        test/display/command.cpp
-        src/display/Command.cpp
-        src/display/Command.h
-        src/display/AddItem.cpp
-        src/display/AddItem.h
-        test/display/console_input.cpp
-        src/display/ConsoleInput.cpp
-        src/display/ConsoleInput.h
-        test/display/menu.cpp
-        src/display/Menu.cpp
-        src/display/Menu.h
-        test/display/console_output.cpp
-        src/display/ConsoleOutput.cpp
-        src/display/ConsoleOutput.h
 )
 
 add_executable(dewit_tests
