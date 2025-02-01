@@ -22,7 +22,7 @@ public:
 
     [[nodiscard]] string get_input() const;
 
-    std::optional<const Item *> select_child_at(int i);
+    std::optional<const Item *> select_child_at(size_t i);
 
 private:
     ItemStore *item_store;
