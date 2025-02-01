@@ -8,6 +8,7 @@
 #include "display/Output.h"
 #include "OutputSpy.h"
 #include "InputFake.h"
+#include "DisplayListSpy.h"
 
 TEST(Menu, get_commands_has_add_item) {
     auto store = ItemStore();
@@ -46,7 +47,7 @@ TEST(Menu, print_items_writes_selected_item_and_numbered_children) {
     menu.print_items();
 
     ASSERT_EQ(output.get_output(),
-        std::format("{}\n => 1. {}\n => 2. {}\n"
+        std::format("{}\n => 0. {}\n => 1. {}\n"
             , item1->get_content()
             , child1.value()->get_content()
             , child2.value()->get_content()));
@@ -63,7 +64,7 @@ TEST(Menu, print_prints_items_commands) {
 
     menu.print();
     ASSERT_EQ(output.get_output(),
-        std::format("{}\n => 1. {}\n\nAdd Item\n"
+        std::format("{}\n => 0. {}\n\nAdd Item\n"
             , item1->get_content()
             , child1.value()->get_content()));
 }
@@ -76,4 +77,22 @@ TEST(Menu, get_response_gets_input) {
     std::string response = menu.get_user_selection();
 
     ASSERT_EQ(response, THE_RESPONSE);
+}
+
+TEST(Menu, execute_delegates_to_display_list_for_numbers) {
+    auto store = ItemStore();
+    const Item* item1 = store.create("item1");
+    auto list = DisplayListSpy(&store);
+    auto menu = Menu(&store, &list, nullptr, nullptr);
+
+    menu.execute("1");
+
+    auto item = list.spy_selected_item();
+    ASSERT_FALSE(item.has_value());
+
+    menu.execute("0");
+
+    item = list.spy_selected_item();
+    ASSERT_TRUE(item.has_value());
+    ASSERT_EQ(item.value(), item1);
 }

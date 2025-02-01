@@ -18,6 +18,7 @@ int main() {
     while (true) {
         menu.print();
         auto selection = menu.get_user_selection();
+        menu.execute(selection);
     }
 
     return -1;

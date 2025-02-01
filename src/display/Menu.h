@@ -28,6 +28,8 @@ public:
 
     std::string get_user_selection();
 
+    void execute(const std::string &selection);
+
 private:
     ItemStore *store;
     DisplayList *display_list;

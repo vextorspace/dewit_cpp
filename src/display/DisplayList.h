@@ -12,7 +12,7 @@ public:
 
     [[nodiscard]] const Item * get_selected_item() const;
 
-    void select_item(const Item * item);
+    virtual void select_item(const Item * item);
 
     [[nodiscard]] std::vector<const Item *> items() const;
 
