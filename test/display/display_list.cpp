@@ -99,3 +99,20 @@ TEST(DisplayList, select_by_index_returns_null_when_no_child_exists) {
     std::optional<const Item *> child = list.select_child_at(1);
     ASSERT_FALSE(child.has_value());
 }
+
+TEST(DisplayList, select_bi_index_returns_child_and_sets_selected_item) {
+    auto store = ItemStore();
+    const Item* item1 = store.create("item1");
+    optional<const Item*> child1 = store.create_in("child1", item1->get_id());
+    auto list = DisplayList(&store);
+
+    std::optional<const Item *> child = list.select_child_at(0);
+    ASSERT_TRUE(child.has_value());
+    ASSERT_EQ(child.value()->get_id(), item1->get_id());
+    ASSERT_EQ(list.get_selected_item()->get_id(), item1->get_id());
+
+    child = list.select_child_at(0);
+    ASSERT_TRUE(child.has_value());
+    ASSERT_EQ(child.value()->get_id(), child1.value()->get_id());
+    ASSERT_EQ(list.get_selected_item()->get_id(), child1.value()->get_id());
+}

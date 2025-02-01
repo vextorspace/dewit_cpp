@@ -49,5 +49,11 @@ string DisplayList::get_input() const {
 }
 
 std::optional<const Item *> DisplayList::select_child_at(size_t i) {
-    return nullopt;
+    if (i >= this->items().size()) {
+        return nullopt;
+    }
+
+    auto new_item =  this->items()[i];
+    this->select_item(new_item);
+    return new_item;
 }
