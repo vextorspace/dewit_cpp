@@ -16,15 +16,18 @@ enable_testing()
 
 file(GLOB_RECURSE PROGRAM_SOURCES
         "${CMAKE_SOURCE_DIR}/src/*.cpp"
-        "${CMAKE_SOURCE_DIR}/src/src/*.cpp"
-        "${CMAKE_SOURCE_DIR}/src/src/items/*.cpp"
-        "${CMAKE_SOURCE_DIR}/src/src/display/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/items/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/display/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/display/commands/*.cpp"
 )
+
 file(GLOB_RECURSE PROGRAM_HEADERS
         "${CMAKE_SOURCE_DIR}/src/*.h"
         "${CMAKE_SOURCE_DIR}/src/test/*.h"
         "${CMAKE_SOURCE_DIR}/src/items/*.h"
         "${CMAKE_SOURCE_DIR}/src/display/*.h"
+        "${CMAKE_SOURCE_DIR}/src/display/commands/*.h"
 )
 
 file(GLOB_RECURSE TEST_SOURCES

@@ -1,7 +1,7 @@
 #ifndef ADDITEM_H
 #define ADDITEM_H
 #include "Command.h"
-#include "DisplayList.h"
+#include "display/DisplayList.h"
 #include "items/ItemStore.h"
 
 

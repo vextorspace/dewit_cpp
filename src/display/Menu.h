@@ -1,7 +1,7 @@
 
 #ifndef MENU_H
 #define MENU_H
-#include "Command.h"
+#include "commands/Command.h"
 #include "DisplayList.h"
 #include "Input.h"
 #include "Output.h"

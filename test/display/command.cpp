@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "display/AddItem.h"
-#include "display/Command.h"
+#include "display/DisplayList.h"
+#include "display/commands/AddItem.h"
+#include "display/commands/Command.h"
 
 TEST(AddItemCommand, nammed_add_item) {
     auto add_item = AddItem(nullptr, nullptr);

@@ -1,7 +1,7 @@
 #include <format>
 #include <gtest/gtest.h>
 
-#include "display/Command.h"
+#include "display/commands/Command.h"
 #include "display/DisplayList.h"
 #include "display/Menu.h"
 #include "items/ItemStore.h"
