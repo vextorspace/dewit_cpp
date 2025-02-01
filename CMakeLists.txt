@@ -34,6 +34,7 @@ file(GLOB_RECURSE TEST_SOURCES
         "${CMAKE_SOURCE_DIR}/test/*.cpp"
         "${CMAKE_SOURCE_DIR}/test/items/*.cpp"
         "${CMAKE_SOURCE_DIR}/test/display/*.cpp"
+        "${CMAKE_SOURCE_DIR}/test/display/commands/*.cpp"
 )
 
 add_executable(dewit main.cpp
