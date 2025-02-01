@@ -90,3 +90,12 @@ TEST(DisplayList, can_request_input) {
 
     ASSERT_EQ(text, "hello there");
 }
+
+TEST(DisplayList, select_by_index_returns_null_when_no_child_exists) {
+    auto store = ItemStore();
+    const Item* item1 = store.create("item1");
+    auto list = DisplayList(&store);
+
+    std::optional<const Item *> child = list.select_child_at(1);
+    ASSERT_FALSE(child.has_value());
+}

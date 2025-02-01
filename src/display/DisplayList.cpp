@@ -47,3 +47,7 @@ void DisplayList::go_back() {
 string DisplayList::get_input() const {
     return ConsoleInput().read_line();
 }
+
+std::optional<const Item *> DisplayList::select_child_at(int i) {
+    return nullopt;
+}

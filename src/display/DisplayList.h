@@ -22,6 +22,8 @@ public:
 
     [[nodiscard]] string get_input() const;
 
+    std::optional<const Item *> select_child_at(int i);
+
 private:
     ItemStore *item_store;
     const Item * selected_item;
