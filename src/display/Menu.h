@@ -18,8 +18,6 @@ public:
 
     ~Menu();
 
-    [[nodiscard]] std::vector<const Command *> get_commands() const;
-
     void print_commands() const;
 
     void print_items() const;

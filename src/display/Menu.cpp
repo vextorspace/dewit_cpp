@@ -23,15 +23,6 @@ Menu::~Menu() {
     }
 }
 
-
-std::vector<const Command *> Menu::get_commands() const {
-    std::vector<const Command *> command_list;
-    for (const auto &command: this->commands) {
-        command_list.push_back(command);
-    }
-    return command_list;
-}
-
 void Menu::print_commands() const {
     std::string command_names;
     for (const auto &command: commands) {
