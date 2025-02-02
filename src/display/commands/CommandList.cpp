@@ -19,9 +19,8 @@ void CommandList::add(std::unique_ptr<Command> command) {
 void CommandList::execute(const string &command_string) {
     for (const auto &command: commands) {
         if (command->matches_this_command(command_string)) {
-            // Assuming a `matches` method exists in Command
-            command->execute(); // Assuming an `execute` method exists in Command
-            break; // Stop after executing the matching command
+            command->execute();
+            break;
         }
     }
 }

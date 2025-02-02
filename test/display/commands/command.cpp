@@ -34,3 +34,8 @@ TEST(Command, matches_with_lowercase) {
     auto add_item = AddItem(nullptr, nullptr);
     ASSERT_TRUE(add_item.matches_this_command("add item"));
 }
+
+TEST(Command, matches_partial_string) {
+    auto add_item = AddItem(nullptr, nullptr);
+    ASSERT_TRUE(add_item.matches_this_command("add"));
+}

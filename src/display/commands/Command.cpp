@@ -12,7 +12,7 @@ const string Command::get_name() const {
 }
 
 bool Command::matches_this_command(const string &command_string) const {
-    return to_lower(get_name()) == to_lower(command_string);
+    return to_lower(get_name()).rfind(to_lower(command_string), 0) == 0;
 }
 
 string Command::to_lower(const string &str) {
