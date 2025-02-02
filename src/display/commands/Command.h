@@ -12,7 +12,11 @@ public:
 
     [[nodiscard]] const string get_name() const;
     virtual void execute() = 0;
+
+    [[nodiscard]] bool matches_this_command(const string &command_string) const;
+
 private:
+    static string to_lower(const string &str);
     string name;
 };
 

@@ -29,3 +29,8 @@ TEST(AddItemCommand, execute_adds_item_with_cin_and_selected_item) {
 
     std::cin.rdbuf(original_cin_buf);
 }
+
+TEST(Command, matches_with_lowercase) {
+    auto add_item = AddItem(nullptr, nullptr);
+    ASSERT_TRUE(add_item.matches_this_command("add item"));
+}
