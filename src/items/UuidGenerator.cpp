@@ -1,5 +1,6 @@
 
 #include "UuidGenerator.h"
+#include <algorithm>
 #include <random>
 #include <sstream>
 #include <iomanip>

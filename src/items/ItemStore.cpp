@@ -1,8 +1,6 @@
 
 #include "ItemStore.h"
-
-#include <bits/ranges_algo.h>
-
+#include <algorithm>
 #include "UuidGenerator.h"
 
 ItemStore::ItemStore() : root(Item("root")), items({}){

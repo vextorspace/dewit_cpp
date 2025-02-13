@@ -3,6 +3,8 @@
 
 #include "UuidGenerator.h"
 #include <ostream>
+#include <algorithm>
+
 #include <bits/ranges_algo.h>
 
 Item::Item(const string content)
